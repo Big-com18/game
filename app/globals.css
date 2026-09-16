@@ -1,0 +1,190 @@
+:root {
+  --bg: #14121f;
+  --bg-card: #1e1b2e;
+  --bg-card-2: #262240;
+  --primary: #8c5cf5;
+  --primary-2: #5c8cf5;
+  --accent: #f55c8c;
+  --good: #00b894;
+  --bad: #e17055;
+  --text: #f2f0fa;
+  --text-dim: #a29fc0;
+  --border: #332e4f;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: radial-gradient(circle at top, #221e3a, #100e1c 70%);
+  color: var(--text);
+  min-height: 100vh;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+#app, main.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px 16px 60px;
+}
+
+h1, h2, h3 { margin: 0 0 8px; }
+h1 { font-size: 26px; }
+h2 { font-size: 20px; }
+p { color: var(--text-dim); line-height: 1.5; }
+a { color: inherit; text-decoration: none; }
+
+.topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.brand { font-weight: 800; font-size: 22px; letter-spacing: -0.5px; cursor: pointer; }
+.brand span { color: var(--primary); }
+
+.user-chip {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--bg-card); padding: 6px 12px; border-radius: 999px;
+  border: 1px solid var(--border); font-size: 14px; cursor: pointer;
+}
+.avatar {
+  width: 24px; height: 24px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; color: white; flex-shrink: 0;
+}
+
+.card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin-bottom: 16px; }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 480px) { .grid-2 { grid-template-columns: 1fr; } }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--primary); color: white; border: none; border-radius: 10px;
+  padding: 12px 18px; font-size: 15px; font-weight: 600; cursor: pointer; width: 100%;
+  transition: transform 0.1s, opacity 0.15s;
+}
+.btn:hover { opacity: 0.9; }
+.btn:active { transform: scale(0.98); }
+.btn.secondary { background: var(--bg-card-2); border: 1px solid var(--border); }
+.btn.good { background: var(--good); }
+.btn.bad { background: var(--bad); }
+.btn.ghost { background: transparent; border: 1px solid var(--border); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-auto { width: auto; padding: 6px 12px; }
+
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-row .btn { flex: 1; min-width: 120px; }
+
+input, textarea {
+  width: 100%; padding: 12px 14px; border-radius: 10px;
+  border: 1px solid var(--border); background: #100e1c; color: var(--text);
+  font-size: 15px; margin-bottom: 10px;
+}
+label { font-size: 13px; color: var(--text-dim); display: block; margin-bottom: 4px; }
+
+.tag { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.tag.werewolf, .tag.undercover { background: rgba(225,112,85,0.2); color: #f0906e; }
+.tag.villager, .tag.civilian { background: rgba(0,184,148,0.2); color: #35d6b3; }
+.tag.mrwhite { background: rgba(245,92,140,0.2); color: #f781a8; }
+
+.player-list { display: flex; flex-direction: column; gap: 8px; }
+.player-row { display: flex; align-items: center; justify-content: space-between; background: var(--bg-card-2); padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border); cursor: default; }
+.player-row.clickable { cursor: pointer; }
+.player-row.dead { opacity: 0.45; text-decoration: line-through; }
+.player-row.selected { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(140,92,245,0.3); }
+.player-row .pname { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+
+.role-card { text-align: center; padding: 32px 20px; border-radius: 18px; background: linear-gradient(160deg, var(--bg-card-2), var(--bg-card)); border: 1px solid var(--border); }
+.role-card .role-name { font-size: 28px; font-weight: 800; margin: 10px 0; }
+.role-card .word { font-size: 32px; font-weight: 800; color: var(--primary); margin: 14px 0; }
+
+.phase-banner { text-align: center; padding: 14px; border-radius: 12px; margin-bottom: 14px; background: var(--bg-card-2); border: 1px solid var(--border); font-weight: 700; letter-spacing: 0.3px; }
+.phase-banner.night { background: #171533; color: #a9a0f5; }
+.phase-banner.day, .phase-banner.discuss { background: #2a2417; color: #f0c96e; }
+.phase-banner.vote { background: #2a1720; color: #f56e8c; }
+
+.log-box { max-height: 220px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; }
+.log-line { font-size: 13.5px; color: var(--text-dim); }
+
+.center { text-align: center; }
+.mt8 { margin-top: 8px; } .mt16 { margin-top: 16px; } .mt24 { margin-top: 24px; }
+.small { font-size: 13px; color: var(--text-dim); }
+.error-box { background: rgba(225,112,85,0.15); color: #f0906e; border: 1px solid rgba(225,112,85,0.3); padding: 10px 14px; border-radius: 10px; margin-bottom: 12px; font-size: 14px; }
+.info-box { background: rgba(140,92,245,0.12); color: #c9b8ff; border: 1px solid rgba(140,92,245,0.3); padding: 10px 14px; border-radius: 10px; margin-bottom: 12px; font-size: 14px; }
+.code-display { font-size: 34px; font-weight: 800; letter-spacing: 6px; text-align: center; color: var(--primary); }
+.stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.stat-box { background: var(--bg-card-2); border-radius: 12px; padding: 14px; text-align: center; border: 1px solid var(--border); }
+.stat-box .num { font-size: 24px; font-weight: 800; }
+.stat-box .lbl { font-size: 12px; color: var(--text-dim); }
+.checkbox-row { display: flex; align-items: center; gap: 8px; margin: 10px 0; }
+.checkbox-row input { width: auto; margin: 0; }
+
+/* ---------- Game-specific menu cards (Werewolf vs Undercover) ---------- */
+.game-card {
+  border-width: 1px;
+  transition: transform 0.12s ease;
+}
+.game-card-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.game-emoji {
+  font-size: 34px;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+}
+.game-card-head h2 { margin-bottom: 2px; }
+
+.werewolf-card {
+  border-color: rgba(225, 112, 85, 0.35);
+  background: linear-gradient(155deg, rgba(225, 112, 85, 0.08), var(--bg-card) 55%);
+}
+.werewolf-card .game-emoji {
+  background: rgba(225, 112, 85, 0.16);
+}
+
+.undercover-card {
+  border-color: rgba(140, 92, 245, 0.35);
+  background: linear-gradient(155deg, rgba(140, 92, 245, 0.10), var(--bg-card) 55%);
+}
+.undercover-card .game-emoji {
+  background: rgba(140, 92, 245, 0.16);
+}
+
+/* ---------- Werewolf role config UI (local pass-and-play) ---------- */
+.stepper-value {
+  min-width: 48px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.role-toggle-list { display: flex; flex-direction: column; gap: 8px; }
+.role-toggle-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--bg-card-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+.role-toggle-row input { width: auto; margin-top: 3px; }
+.role-toggle-row p { margin: 2px 0 0; }
+.role-select {
+  width: auto;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #100e1c;
+  color: var(--text);
+  margin-bottom: 0;
+}
